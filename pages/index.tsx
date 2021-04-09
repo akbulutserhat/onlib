@@ -1,49 +1,37 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
+import Book from '../components/Book';
 import Layout from '../components/Layout';
 
-const IndexPage = ({ data }) => {
+export interface BookModal {
+  _id: string;
+  title: string;
+  author: string;
+  description?: Array<string>;
+  categories?: Array<string>;
+  readLink?: string;
+  image?: string;
+  libraries?: Array<string>;
+}
+interface Props {
+  books?: Array<BookModal>;
+}
+
+const IndexPage: React.FC<Props> = ({ books }) => {
   return (
-    <Layout title='Next.js'>
-      <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aperiam
-        quibusdam est tempora esse magni. Aspernatur reprehenderit maiores
-        facilis recusandae culpa, tempore voluptatem ratione architecto
-        asperiores non sunt autem quidem natus.
-      </p>
-      <p>
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid nihil
-        a tempora omnis nisi error accusamus ullam, veniam, perferendis natus
-        reiciendis ratione nobis qui ipsa ipsum. Accusamus sit assumenda
-        mollitia.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, alias
-        eveniet ducimus molestias in aut? Id earum ipsa, iure aliquid asperiores
-        facilis hic tenetur commodi nobis sequi aspernatur dicta eos?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, alias
-        eveniet ducimus molestias in aut? Id earum ipsa, iure aliquid asperiores
-        facilis hic tenetur commodi nobis sequi aspernatur dicta eos?
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti, alias
-        eveniet ducimus molestias in aut? Id earum ipsa, iure aliquid asperiores
-        facilis hic tenetur commodi nobis sequi aspernatur dicta eos?
-      </p>
+    <Layout title='Onlib'>
+      {books.map((book) => (
+        <Book book={book} key={book._id}></Book>
+      ))}
     </Layout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Call an external API endpoint to get posts
-  const res = await fetch('http://localhost:3000/api/hello');
+  const res = await fetch('http://localhost:5000/book/all-books');
   const data = await res.json();
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
-      data,
+      books: data.data,
     },
   };
 };
