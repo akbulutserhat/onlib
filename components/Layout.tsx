@@ -23,7 +23,7 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
           crossOrigin='anonymous'></link>
       </Head>
       <Header></Header>
-      {children}
+      <main className='container'>{children}</main>
     </div>
     <Navigation></Navigation>
   </>

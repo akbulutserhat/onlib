@@ -3,9 +3,7 @@ import Layout from '../components/Layout';
 const Libraries = () => {
   return (
     <Layout title='All Libraries'>
-      <main>
-        <h1>Libraries</h1>
-      </main>
+      <h1>Libraries</h1>
     </Layout>
   );
 };
