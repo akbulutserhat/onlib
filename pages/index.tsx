@@ -1,4 +1,5 @@
 import { GetServerSideProps, GetStaticProps } from 'next';
+import { useEffect, useState } from 'react';
 import Book from '../components/Book';
 import Layout from '../components/Layout';
 
@@ -17,9 +18,10 @@ interface Props {
 }
 
 const IndexPage: React.FC<Props> = ({ books }) => {
+  const [currentBooks, setCurrentBooks] = useState(books);
   return (
     <Layout title='Onlib'>
-      {books.map((book) => (
+      {currentBooks.map((book) => (
         <Book book={book} key={book._id}></Book>
       ))}
     </Layout>
@@ -27,7 +29,7 @@ const IndexPage: React.FC<Props> = ({ books }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch('http://localhost:5000/book/all-books');
+  const res = await fetch('http://localhost:5000/book/books/page=0&limit=24');
   const data = await res.json();
   return {
     props: {

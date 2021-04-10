@@ -1,0 +1,23 @@
+@import 'constants';
+
+.bookCard {
+  display: flex;
+
+  img {
+    width: 100px;
+    height: 156px;
+  }
+}
+
+.bookInfo {
+  display: flex;
+  flex-direction: column;
+
+  h3 {
+    font-size: 16px;
+  }
+
+  span {
+    background-color: $pink;
+  }
+}
