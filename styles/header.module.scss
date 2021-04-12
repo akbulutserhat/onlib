@@ -1,8 +1,16 @@
+@import 'constants';
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 8px;
+  margin-bottom: 20px;
+
+  img {
+    width: 96px;
+    height: 96px;
+  }
 
   p {
     font-weight: 700;

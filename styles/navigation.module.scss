@@ -3,16 +3,31 @@
 .stickyNavigation {
   background-color: $white;
   color: $grey;
-  box-shadow: 0 -2px 2px 2px rgba($grey, 0.1);
+  box-shadow: 0 -2px 2px 2px rgba($grey, 0.4);
   padding-top: 8px;
   position: sticky;
-  bottom: 0;
   font-size: 12px;
   font-weight: 600;
+
+  @media (max-width: 968px) {
+    bottom: 0;
+  }
+
+  @media (min-width: 968px) {
+    position: fixed;
+    top: 40%;
+    left: 0;
+  }
 }
 
 .navList {
   display: flex;
+
+  @media (min-width: 968px) {
+    flex-direction: column;
+    min-height: 240px;
+    padding: 10px;
+  }
   justify-content: space-around;
   align-items: center;
 
@@ -30,5 +45,9 @@
 }
 
 .activeLink {
-  color: $pink;
+  color: $primary;
+
+  &:hover {
+    color: $primary;
+  }
 }

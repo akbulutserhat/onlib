@@ -1,5 +1,5 @@
-import { GetServerSideProps, GetStaticProps } from 'next';
-import { useEffect, useState } from 'react';
+import { GetStaticProps } from 'next';
+import { useState } from 'react';
 import Book from '../components/Book';
 import Layout from '../components/Layout';
 
@@ -21,9 +21,13 @@ const IndexPage: React.FC<Props> = ({ books }) => {
   const [currentBooks, setCurrentBooks] = useState(books);
   return (
     <Layout title='Onlib'>
-      {currentBooks.map((book) => (
-        <Book book={book} key={book._id}></Book>
-      ))}
+      <div className='row'>
+        {currentBooks.map((book) => (
+          <div className='col-12 col-md-6 col-lg-4 mb-3' key={book._id}>
+            <Book book={book} key={book._id}></Book>
+          </div>
+        ))}
+      </div>
     </Layout>
   );
 };

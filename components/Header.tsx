@@ -6,7 +6,7 @@ type Props = {
 
 const Header = ({ title = 'OnLib' }: Props) => (
   <header className={HeaderStyle.header}>
-    <p>{title}</p>
+    <img src='logo_v4.png'></img>
   </header>
 );
 
