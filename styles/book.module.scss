@@ -6,6 +6,11 @@
   box-shadow: 0 0 5px 5px rgba($grey, 0.3);
   padding: 10px 10px 0 10px;
 
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+  }
+
   img {
     width: 100px;
     height: 156px;
